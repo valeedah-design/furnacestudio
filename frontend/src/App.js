@@ -3,13 +3,18 @@ import Lenis from "lenis";
 import "@/index.css";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
-import SystemDiagram from "@/components/SystemDiagram";
-import Process from "@/components/Process";
-import Manifesto from "@/components/Manifesto";
+import Ingredients from "@/components/Ingredients";
+import Recipe from "@/components/Recipe";
+import Mix from "@/components/Mix";
+import Heat from "@/components/Heat";
+import Bake from "@/components/Bake";
+import Iterate from "@/components/Iterate";
+import Temper from "@/components/Temper";
+import Outcomes from "@/components/Outcomes";
 import Services from "@/components/Services";
 import CaseStudies from "@/components/CaseStudies";
 import Compare from "@/components/Compare";
+import Manifesto from "@/components/Manifesto";
 import Team from "@/components/Team";
 import FinalCTA from "@/components/FinalCTA";
 import ContactModal from "@/components/ContactModal";
@@ -44,13 +49,18 @@ function App() {
       <Nav onStart={openContact} />
       <main>
         <Hero onStart={openContact} />
-        <Problem />
-        <SystemDiagram />
-        <Process />
-        <Manifesto />
+        <Ingredients />
+        <Recipe />
+        <Mix />
+        <Heat />
+        <Bake />
+        <Iterate />
+        <Temper />
+        <Outcomes />
         <Services />
         <CaseStudies />
         <Compare onStart={openContact} />
+        <Manifesto />
         <Team />
         <FinalCTA onStart={openContact} />
       </main>

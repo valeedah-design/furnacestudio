@@ -1,6 +1,15 @@
-import { MaskedLine, SectionLabel } from "@/components/Shared";
+import { MaskedLine } from "@/components/Shared";
 
-const WORDS = ["RAW", "HEAT", "SORT", "SHAPE", "TEMPER", "RESULT"];
+const WORDS = ["RAW INGREDIENTS", "RECIPE", "HEAT", "BAKE", "TEMPER", "RESULT"];
+
+const SENTENCES = [
+  { t: "Good ingredients matter.", align: "left", style: "solid" },
+  { t: "So does the recipe.", align: "right", style: "outline" },
+  { t: "So does the heat.", align: "left", style: "solid", hot: "heat" },
+  { t: "So does the timing.", align: "right", style: "outline" },
+  { t: "So does the finish.", align: "left", style: "solid" },
+  { t: "So does the result.", align: "right", style: "solid", hot: "result" },
+];
 
 function Marquee() {
   return (
@@ -36,47 +45,46 @@ function Marquee() {
 export default function Manifesto() {
   return (
     <section data-testid="manifesto-section" className="relative py-32 md:py-52">
-      <div className="mx-auto max-w-[110rem] space-y-28 px-6 md:space-y-44 md:px-10">
-        <div>
-          <SectionLabel>Chapter 01 — The Furnace Principle</SectionLabel>
-          <h2 className="text-[clamp(2.6rem,8vw,8rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
-            <MaskedLine>Complexity</MaskedLine>
-            <MaskedLine delay={0.12}>is normal.</MaskedLine>
-          </h2>
-        </div>
-
-        <div className="md:text-right">
-          <div className="mb-10 flex items-center gap-3 md:justify-end">
-            <span className="h-2 w-2 bg-ember" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/40">
-              Chapter 02
-            </span>
+      <div className="mx-auto max-w-[110rem] space-y-20 px-6 md:space-y-32 md:px-10">
+        {SENTENCES.map((s, i) => (
+          <div
+            key={s.t}
+            data-testid={`manifesto-line-${i}`}
+            className={s.align === "right" ? "md:text-right" : ""}
+          >
+            <div
+              className={`mb-8 flex items-center gap-3 ${
+                s.align === "right" ? "md:justify-end" : ""
+              }`}
+            >
+              <span
+                className={`h-2 w-2 ${
+                  s.hot === "result" ? "bg-temper" : s.hot ? "bg-ember" : "bg-white/30"
+                }`}
+              />
+              <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/40">
+                0{i + 1}
+              </span>
+            </div>
+            <h2 className="text-[clamp(2.2rem,7vw,7rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
+              <MaskedLine>
+                {s.hot === "heat" ? (
+                  <>
+                    So does the <span className="text-ember">heat</span>.
+                  </>
+                ) : s.hot === "result" ? (
+                  <>
+                    So does the <span className="text-temper">result</span>.
+                  </>
+                ) : s.style === "outline" ? (
+                  <span className="text-outline">{s.t}</span>
+                ) : (
+                  s.t
+                )}
+              </MaskedLine>
+            </h2>
           </div>
-          <h2 className="text-[clamp(2.6rem,8vw,8rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
-            <MaskedLine>
-              <span className="text-outline">Confusion</span>
-            </MaskedLine>
-            <MaskedLine delay={0.12}>
-              isn’t<span className="text-ember">.</span>
-            </MaskedLine>
-          </h2>
-        </div>
-
-        <div>
-          <div className="mb-10 flex items-center gap-3">
-            <span className="h-2 w-2 bg-temper" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/40">
-              Chapter 03
-            </span>
-          </div>
-          <h2 className="text-[clamp(2rem,5.5vw,5.5rem)] font-extrabold uppercase leading-[1.02] tracking-[-0.02em]">
-            <MaskedLine>We remove the noise.</MaskedLine>
-            <MaskedLine delay={0.12}>We keep what matters.</MaskedLine>
-            <MaskedLine delay={0.24}>
-              We build what <span className="text-temper">works</span>.
-            </MaskedLine>
-          </h2>
-        </div>
+        ))}
       </div>
       <Marquee />
     </section>

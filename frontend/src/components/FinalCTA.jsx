@@ -13,13 +13,13 @@ export default function FinalCTA({ onStart }) {
         <div className="mb-10 flex items-center justify-center gap-3">
           <span className="h-2 w-2 bg-temper" />
           <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/40">
-            The tempered state
+            Out of the oven
           </span>
         </div>
         <h2 className="text-[clamp(2.6rem,8.5vw,9rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.02em]">
-          <MaskedLine>Got a good business?</MaskedLine>
+          <MaskedLine>Got good ingredients?</MaskedLine>
           <MaskedLine delay={0.15}>
-            <span className="text-temper">Let’s make it look like one.</span>
+            <span className="text-temper">Let’s make something people want.</span>
           </MaskedLine>
         </h2>
         <p className="mx-auto mt-10 max-w-md text-base font-medium text-white/55 md:text-lg">

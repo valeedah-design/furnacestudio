@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, MoveHorizontal } from "lucide-react";
 import { MaskedLine, SectionLabel, EASE } from "@/components/Shared";
 
 const MORPH = [
@@ -10,8 +10,8 @@ const MORPH = [
   { b: { x: 70, y: 50, w: 20, h: 16, r: -7 }, a: { x: 56, y: 21, w: 38, h: 28 }, bg: "image" },
   { b: { x: 10, y: 68, w: 16, h: 6, r: -5 }, a: { x: 6, y: 48, w: 36, h: 3 }, bg: "line" },
   { b: { x: 44, y: 64, w: 12, h: 6, r: 12 }, a: { x: 6, y: 54, w: 28, h: 3 }, bg: "line" },
-  { b: { x: 30, y: 22, w: 12, h: 8, r: -14 }, a: { x: 6, y: 64, w: 16, h: 7 }, bg: "button" },
-  { b: { x: 52, y: 34, w: 10, h: 6, r: 8 }, a: { x: 6, y: 78, w: 88, h: 4 }, bg: "nav" },
+  { b: { x: 30, y: 24, w: 12, h: 8, r: -14 }, a: { x: 6, y: 64, w: 16, h: 7 }, bg: "button" },
+  { b: { x: 52, y: 36, w: 10, h: 6, r: 8 }, a: { x: 6, y: 78, w: 88, h: 4 }, bg: "nav" },
 ];
 
 const AFTER_BG = {
@@ -28,9 +28,10 @@ const CASES = [
     idx: "01",
     name: "EMBER & OAK",
     sector: "Restaurant · Manchester",
+    ingredients: "A serious kitchen. A room with character. Regulars who’d fight for the place.",
     problem: "Full kitchen, empty Tuesdays. The website was a PDF menu from 2019.",
-    insight: "People searched “restaurants near me” and found nothing worth clicking.",
-    build: "New identity, one-page site, Google profile rebuilt, booking in two taps.",
+    recipe: "New identity, a one-page site, the Google profile rebuilt, booking in two taps.",
+    bake: "Designed, built and tested in four weeks. The menu loads before you’ve decided.",
     result: "Covers went up on the quiet nights. The phone started doing its job.",
     metrics: [
       { v: "+38", s: "%", label: "Bookings" },
@@ -43,9 +44,10 @@ const CASES = [
     idx: "02",
     name: "COLDWELL BARBERS",
     sector: "Barbershop · Leeds",
+    ingredients: "Real craft. A chair people trust. A queue on Saturdays.",
     problem: "Walk-ins only. Chairs empty midweek, weekends pure chaos.",
-    insight: "Regulars wanted to book at midnight, not queue at noon.",
-    build: "A booking flow, local SEO, and photo direction that looks like the cut.",
+    recipe: "A booking flow, local SEO, and photo direction that looks like the cut.",
+    bake: "Two design rounds. Tested on regulars’ phones before launch.",
     result: "The week evened out. The diary fills itself now.",
     metrics: [
       { v: "61", s: "%", label: "Bookings now online" },
@@ -58,9 +60,10 @@ const CASES = [
     idx: "03",
     name: "NORTHLINE DENTAL",
     sector: "Clinic · Sheffield",
+    ingredients: "Good dentists. Nervous patients. A reputation built on referrals.",
     problem: "A website from another decade. Phones quiet. Trust quieter.",
-    insight: "Patients decide whether to trust a clinic in about five seconds.",
-    build: "Rebrand, a 1.1-second website, and a clear call to action on every page.",
+    recipe: "Rebrand, a 1.1-second website, a clear call to action on every page.",
+    bake: "Three test rounds with real patients. Every friction point removed.",
     result: "The diary filled. Referrals started mentioning the website.",
     metrics: [
       { v: "+52", s: "%", label: "Phone calls" },
@@ -102,69 +105,96 @@ const Counter = ({ value }) => {
   );
 };
 
-function MorphPanel({ slug }) {
-  const [after, setAfter] = useState(false);
+function BeforeAfter({ slug }) {
+  const ref = useRef(null);
+  const dragging = useRef(false);
+  const [pos, setPos] = useState(78);
+
+  const setFromX = (clientX) => {
+    const r = ref.current.getBoundingClientRect();
+    setPos(Math.min(96, Math.max(4, ((clientX - r.left) / r.width) * 100)));
+  };
+
   return (
     <div
-      data-testid={`case-morph-${slug}`}
-      onMouseEnter={() => setAfter(true)}
-      onMouseLeave={() => setAfter(false)}
-      onClick={() => setAfter((v) => !v)}
-      className="relative aspect-[16/9] w-full cursor-pointer overflow-hidden border border-white/10 bg-[#0d0d10]"
+      ref={ref}
+      data-testid={`case-slider-${slug}`}
+      role="slider"
+      aria-label="Before and after comparison"
+      aria-valuenow={Math.round(pos)}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft") setPos((p) => Math.max(4, p - 6));
+        if (e.key === "ArrowRight") setPos((p) => Math.min(96, p + 6));
+      }}
+      onPointerDown={(e) => {
+        dragging.current = true;
+        e.currentTarget.setPointerCapture(e.pointerId);
+        setFromX(e.clientX);
+      }}
+      onPointerMove={(e) => dragging.current && setFromX(e.clientX)}
+      onPointerUp={() => (dragging.current = false)}
+      onPointerCancel={() => (dragging.current = false)}
+      className="relative aspect-[16/9] w-full cursor-ew-resize touch-none select-none overflow-hidden border border-white/10 bg-[#0d0d10] outline-none focus-visible:border-temper"
     >
-      {MORPH.map((blk, i) => {
-        const target = after ? blk.a : blk.b;
-        return (
-          <motion.div
+      {/* BEFORE — the raw ingredients */}
+      <div className="absolute inset-0">
+        {MORPH.map((blk, i) => (
+          <div
             key={i}
             className={`absolute border ${
-              after
-                ? AFTER_BG[blk.bg]
-                : i === 2
-                  ? "border-ember/50 bg-ember/10"
-                  : "border-white/15 bg-white/5"
+              i === 2 ? "border-ember/50 bg-ember/10" : "border-white/15 bg-white/5"
             }`}
-            initial={false}
-            animate={{
-              left: `${target.x}%`,
-              top: `${target.y}%`,
-              width: `${target.w}%`,
-              height: `${target.h}%`,
-              rotate: after ? 0 : blk.b.r,
+            style={{
+              left: `${blk.b.x}%`,
+              top: `${blk.b.y}%`,
+              width: `${blk.b.w}%`,
+              height: `${blk.b.h}%`,
+              transform: `rotate(${blk.b.r}deg)`,
             }}
-            transition={{ duration: 0.8, ease: EASE, delay: i * 0.03 }}
           />
-        );
-      })}
-      <span
-        className={`absolute left-4 top-4 text-[10px] font-bold uppercase tracking-[0.3em] transition-opacity duration-500 ${
-          after ? "text-ember/40 opacity-40" : "text-ember opacity-100"
-        }`}
-      >
+        ))}
+      </div>
+      {/* AFTER — out of the oven */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
+        {MORPH.map((blk, i) => (
+          <div
+            key={i}
+            className={`absolute border ${AFTER_BG[blk.bg]}`}
+            style={{
+              left: `${blk.a.x}%`,
+              top: `${blk.a.y}%`,
+              width: `${blk.a.w}%`,
+              height: `${blk.a.h}%`,
+            }}
+          />
+        ))}
+      </div>
+
+      <span className="pointer-events-none absolute left-4 top-4 text-[10px] font-bold uppercase tracking-[0.3em] text-ember">
         Before
       </span>
-      <span
-        className={`absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-[0.3em] transition-opacity duration-500 ${
-          after ? "text-temper opacity-100" : "text-temper/40 opacity-40"
-        }`}
-      >
+      <span className="pointer-events-none absolute right-4 top-4 text-[10px] font-bold uppercase tracking-[0.3em] text-temper">
         After
       </span>
-      <span
-        className={`absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-white/25 transition-opacity duration-300 ${
-          after ? "opacity-0" : "opacity-100"
-        }`}
+
+      <div
+        className="pointer-events-none absolute inset-y-0 w-px bg-white"
+        style={{ left: `${pos}%` }}
       >
-        Hover to forge
-      </span>
+        <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-white bg-forge text-white">
+          <MoveHorizontal className="h-4 w-4" />
+        </span>
+      </div>
     </div>
   );
 }
 
 const STORY_ROWS = [
+  { label: "THE INGREDIENTS", key: "ingredients", tone: "white" },
   { label: "THE PROBLEM", key: "problem", tone: "ember" },
-  { label: "THE INSIGHT", key: "insight", tone: "ember" },
-  { label: "THE BUILD", key: "build", tone: "white" },
+  { label: "THE RECIPE", key: "recipe", tone: "white" },
+  { label: "THE BAKE", key: "bake", tone: "ember" },
   { label: "THE RESULT", key: "result", tone: "temper" },
 ];
 
@@ -185,7 +215,10 @@ function CaseStudy({ c }) {
       </div>
 
       <div className="mt-8 md:mt-10">
-        <MorphPanel slug={c.slug} />
+        <BeforeAfter slug={c.slug} />
+        <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">
+          Drag the handle — raw ingredients on the left, finished product on the right
+        </p>
       </div>
 
       <div className="mt-6 grid grid-cols-3 divide-x divide-white/10 border border-white/10">
@@ -211,7 +244,7 @@ function CaseStudy({ c }) {
         onClick={() => setOpen((v) => !v)}
         className="mt-8 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 hover:text-white"
       >
-        {open ? "Close the story" : "Read the story"}
+        {open ? "Close the recipe" : "Read the recipe"}
         <Plus
           className={`h-4 w-4 transition-transform duration-500 ${open ? "rotate-45 text-ember" : ""}`}
         />
@@ -233,7 +266,7 @@ function CaseStudy({ c }) {
                   className="flex flex-col gap-2 border-t border-white/10 py-5 md:flex-row md:gap-10"
                 >
                   <span
-                    className={`w-40 shrink-0 text-[10px] font-bold tracking-[0.3em] ${
+                    className={`w-44 shrink-0 text-[10px] font-bold tracking-[0.3em] ${
                       row.tone === "ember"
                         ? "text-ember"
                         : row.tone === "temper"
@@ -263,7 +296,7 @@ export default function CaseStudies() {
       data-testid="work-section"
       className="mx-auto max-w-[110rem] px-6 py-32 md:px-10 md:py-48"
     >
-      <SectionLabel tone="temper">Selected work</SectionLabel>
+      <SectionLabel tone="temper">Case studies</SectionLabel>
       <h2 className="text-[clamp(2.4rem,7vw,7rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
         <MaskedLine>What a Furnace</MaskedLine>
         <MaskedLine delay={0.12}>
@@ -271,8 +304,8 @@ export default function CaseStudies() {
         </MaskedLine>
       </h2>
       <p className="mt-8 max-w-lg text-base font-medium text-white/50">
-        Fictional engagements, real structure. Client metrics drop straight in when
-        they’re ready.
+        Three fictional engagements, built like real ones. Client results replace the
+        placeholder metrics when they ship.
       </p>
 
       <div className="mt-16 border-b border-white/10">

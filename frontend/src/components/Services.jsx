@@ -65,13 +65,13 @@ export default function Services() {
     >
       <SectionLabel>Services</SectionLabel>
       <h2 className="text-[clamp(2.4rem,7vw,7rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
-        <MaskedLine>What we</MaskedLine>
+        <MaskedLine>What we put</MaskedLine>
         <MaskedLine delay={0.12}>
-          <span className="text-outline">actually do.</span>
+          <span className="text-outline">in the mix.</span>
         </MaskedLine>
       </h2>
       <p className="mt-8 max-w-md text-base font-medium text-white/50">
-        Six things. Done properly. In the right order.
+        Six things. Measured properly. In the right order.
       </p>
 
       <div className="mt-20 border-b border-white/10">

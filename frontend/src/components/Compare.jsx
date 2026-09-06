@@ -5,7 +5,7 @@ import { MaskedLine, SectionLabel, EASE } from "@/components/Shared";
 const ROLES = [
   { name: "Designer", note: "Own taste." },
   { name: "Developer", note: "Own code." },
-  { name: "SEO freelancer", note: "Own spreadsheet." },
+  { name: "SEO person", note: "Own spreadsheet." },
   { name: "Copywriter", note: "Own voice." },
   { name: "Marketing person", note: "Own agenda." },
 ];
@@ -16,11 +16,11 @@ export default function Compare({ onStart }) {
       data-testid="compare-section"
       className="mx-auto max-w-[110rem] px-6 py-32 md:px-10 md:py-48"
     >
-      <SectionLabel>The alternative</SectionLabel>
+      <SectionLabel>The Furnace difference</SectionLabel>
       <h2 className="text-[clamp(2.2rem,6vw,6rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
-        <MaskedLine>You could hire</MaskedLine>
+        <MaskedLine>You don’t need</MaskedLine>
         <MaskedLine delay={0.12}>
-          <span className="text-outline">five people.</span>
+          <span className="text-outline">five freelancers.</span>
         </MaskedLine>
       </h2>
 
@@ -45,13 +45,13 @@ export default function Compare({ onStart }) {
 
       <div className="mt-24 md:mt-32">
         <h3 className="text-[clamp(2rem,5.5vw,5.5rem)] font-extrabold uppercase leading-[0.98] tracking-[-0.02em]">
-          <MaskedLine>Or one team that</MaskedLine>
-          <MaskedLine delay={0.12}>
-            makes the <span className="text-temper">pieces</span>
-          </MaskedLine>
-          <MaskedLine delay={0.24}>work together.</MaskedLine>
+          <MaskedLine>You need the pieces</MaskedLine>
+          <MaskedLine delay={0.12}>to work together.</MaskedLine>
         </h3>
-        <p className="mt-8 max-w-md text-base font-medium text-white/55">
+        <p className="mt-10 text-2xl font-extrabold uppercase tracking-tight text-temper md:text-3xl">
+          That’s Furnace.
+        </p>
+        <p className="mt-4 max-w-md text-base font-medium text-white/55">
           One conversation. One system. One invoice.
         </p>
         <button

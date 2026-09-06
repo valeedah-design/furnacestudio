@@ -32,7 +32,7 @@ export default function Team() {
       <h2 className="text-[clamp(2.4rem,7vw,7rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em]">
         <MaskedLine>Small team.</MaskedLine>
         <MaskedLine delay={0.12}>
-          <span className="text-outline">No bullshit.</span>
+          <span className="text-outline">Big responsibility.</span>
         </MaskedLine>
       </h2>
 

@@ -171,9 +171,9 @@ export default function Hero({ onStart }) {
           </motion.div>
 
           <h1 className="text-[clamp(2.9rem,10.5vw,10rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.02em]">
-            <HeroLine delay={0.25}>Raw businesses.</HeroLine>
+            <HeroLine delay={0.25}>Good ingredients.</HeroLine>
             <HeroLine delay={0.4}>
-              <span className="text-outline">Sharp identities</span>
+              <span className="text-outline">Bad recipe</span>
               <span className="text-ember">.</span>
             </HeroLine>
           </h1>
@@ -185,8 +185,8 @@ export default function Hero({ onStart }) {
               transition={{ delay: 0.75, duration: 0.8, ease: EASE }}
               className="max-w-md text-base font-medium leading-relaxed text-white/60 md:text-lg"
             >
-              Design and marketing for local businesses that need{" "}
-              <span className="text-white">customers</span>, not compliments.
+              We build brands, websites and marketing that get local businesses{" "}
+              <span className="text-white">noticed</span>.
             </motion.p>
 
             <motion.div
@@ -205,10 +205,10 @@ export default function Hero({ onStart }) {
               </button>
               <button
                 data-testid="hero-see-how"
-                onClick={() => scrollToId("problem")}
+                onClick={() => scrollToId("ingredients")}
                 className="group flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-white/60 transition-colors duration-300 hover:text-white"
               >
-                See how we work
+                See what we do
                 <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
               </button>
             </motion.div>
