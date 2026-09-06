@@ -1,0 +1,309 @@
+{
+  "brand": {
+    "name": "FURNACE",
+    "tagline": "RAW BUSINESSES. SHARP IDENTITIES.",
+    "proposition": "Design and marketing for local businesses that need customers, not compliments.",
+    "personality": "direct, unpretentious, confident, precise, blunt",
+    "tone_of_voice": "Short confident sentences focused on customers, traffic, visibility, bookings, sales, and conversion.",
+    "banned_words": [
+      "synergy",
+      "elevate",
+      "innovative solutions",
+      "digital transformation",
+      "holistic",
+      "cutting-edge",
+      "empower",
+      "ecosystem"
+    ],
+    "target_audience": [
+      "restaurants",
+      "cafés",
+      "salons",
+      "barbers",
+      "tradespeople",
+      "shops",
+      "clinics"
+    ]
+  },
+  "colors": {
+    "base_black": "#0A0A0A",
+    "off_black": "#16161A",
+    "white": "#FFFFFF",
+    "ember_orange": "#FF4A1C",
+    "temper_blue_violet": "#4A5FE8",
+    "muted_gray": "#888890",
+    "border_dark": "#26262C",
+    "semantics": {
+      "ember_orange": "HEAT / transformation in progress — primary CTAs, active numbers, active drag states, high entropy stages",
+      "temper_blue_violet": "SET / FINISHED / resolved state — final stage, resolved metrics, completed system state",
+      "base_black": "raw unlit forge / deep canvas background",
+      "off_black": "forged panels, structured cards, tactical containers"
+    }
+  },
+  "typography": {
+    "font_family": "Manrope, sans-serif",
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extrabold": 800
+    },
+    "scale": {
+      "hero_headline": "text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter leading-[0.9]",
+      "section_title": "text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]",
+      "sub_headline": "text-xl sm:text-2xl md:text-3xl font-bold tracking-tight",
+      "body_large": "text-lg sm:text-xl font-medium leading-relaxed text-gray-300",
+      "body_regular": "text-base font-normal leading-normal text-gray-400",
+      "label": "text-xs font-mono uppercase tracking-[0.25em] text-gray-500",
+      "stat_number": "text-5xl sm:text-7xl font-extrabold font-mono tracking-tighter"
+    }
+  },
+  "visual_enhancers": {
+    "grid_borders": "1px solid #26262C with deliberate technical alignment",
+    "cursor_effects": "Custom reactive cursor with magnet/repel effect on hero fragments and interactive cards",
+    "noise_overlay": "Subtle industrial grain texture overlay with opacity 0.03 to break digital flatness",
+    "marquee": "Slow editorial text marquee with low contrast outline type and tight tracking",
+    "lines_system": "Scroll-driven dynamic SVG connecting lines drawing between brand, website, search, content, customer, and revenue blocks"
+  },
+  "layout_and_grids": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing_scale": "Generous spacing scale (py-20 to py-32 for sections, gap-8 to gap-12 for bento items)",
+    "grid_system": "Asymmetric Swiss grid with 12 columns (grid-cols-1 md:grid-cols-12) and stark 1px borders"
+  },
+  "motion": {
+    "core_concept": "RAW (high entropy, high chaos, ember orange) → HEAT → SORT → SHAPE → TEMPER → RESULT (low entropy, high structure, temper blue-violet)",
+    "libraries": [
+      "framer-motion",
+      "lenis (smooth scroll)"
+    ],
+    "patterns": [
+      "cursor-reactive fragment field repel/attract in Hero",
+      "scroll-driven SVG path drawing for system diagrams",
+      "masked line-by-line kinetic typography reveals",
+      "interactive before/after morphing case study cards",
+      "staggered grid snapping and component reordering on scroll"
+    ]
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "order": 1,
+      "headline": "RAW BUSINESSES. SHARP IDENTITIES.",
+      "proposition": "Design and marketing for local businesses that need customers, not compliments.",
+      "primary_cta": "START A PROJECT →",
+      "secondary_cta": "SEE HOW WE WORK ↓",
+      "visual_experience": "Kinetic typography reveal + floating interactive UI fragments (menu card, search result, analytics widget, booking form) reacting to cursor position."
+    },
+    {
+      "id": "problem",
+      "order": 2,
+      "headline": "YOUR BUSINESS IS GOOD. PEOPLE JUST DON'T SEE IT.",
+      "content": "The logo looks fine. The website works. Instagram is active. But something isn't connecting. That's where we come in.",
+      "visual_experience": "Stark minimal space, massive high-contrast typography, statement blocks with dark high-impact focus."
+    },
+    {
+      "id": "why_furnace",
+      "order": 3,
+      "headline": "MOST LOCAL BUSINESSES DON'T NEED MORE MARKETING.",
+      "content": "They need the right things to work together.",
+      "chain_items": [
+        "BRAND",
+        "WEBSITE",
+        "SEARCH",
+        "CONTENT",
+        "CUSTOMER",
+        "REVENUE"
+      ],
+      "visual_experience": "Disconnected nodes on initial view; animated SVG path connectors draw between them on scroll to form a unified high-converting pipeline."
+    },
+    {
+      "id": "process",
+      "order": 4,
+      "headline": "FROM RAW TO READY.",
+      "description": "Centerpiece immersive scroll-driven transformation.",
+      "stages": [
+        {
+          "step": "01",
+          "name": "RAW",
+          "state": "Fragments, noise, high entropy, subtle ember orange highlights"
+        },
+        {
+          "step": "02",
+          "name": "HEAT",
+          "state": "Research fragments, irrelevant noise disappears, heat intensity rises"
+        },
+        {
+          "step": "03",
+          "name": "SORT",
+          "state": "WHAT MATTERS vs WHAT DOESN'T, clutter shrinks, key signals amplify"
+        },
+        {
+          "step": "04",
+          "name": "SHAPE",
+          "state": "Chaotic rectangles snap into responsive grid wireframe & components"
+        },
+        {
+          "step": "05",
+          "name": "TEMPER",
+          "state": "Testing speed, SEO, mobile, conversion; first appearance of Temper Blue-Violet (#4A5FE8)"
+        },
+        {
+          "step": "06",
+          "name": "RESULT",
+          "state": "LESS NOISE. MORE BUSINESS. Complete system resolution with total calm & stability"
+        }
+      ]
+    },
+    {
+      "id": "manifesto",
+      "order": 5,
+      "headline": "FURNACE PRINCIPLE",
+      "statements": [
+        "COMPLEXITY IS NORMAL.",
+        "CONFUSION ISN'T.",
+        "WE REMOVE THE NOISE. WE KEEP WHAT MATTERS. WE BUILD WHAT WORKS."
+      ],
+      "visual_experience": "Numbered editorial manifesto chapters with high-contrast oversized typography."
+    },
+    {
+      "id": "services",
+      "order": 6,
+      "headline": "WHAT WE ACTUALLY DO.",
+      "items": [
+        {
+          "title": "BRAND",
+          "desc": "Identity, positioning, visual direction"
+        },
+        {
+          "title": "WEBSITE",
+          "desc": "Strategy, UX, UI, development"
+        },
+        {
+          "title": "LOCAL VISIBILITY",
+          "desc": "Google presence, local SEO"
+        },
+        {
+          "title": "CONTENT",
+          "desc": "Photography direction, social, campaigns"
+        },
+        {
+          "title": "CONVERSION",
+          "desc": "Landing pages, booking flows, CTAs"
+        },
+        {
+          "title": "GROWTH",
+          "desc": "Analytics, testing, improvement"
+        }
+      ],
+      "visual_experience": "Interactive horizontal/accordion list where hovering expands the service, reveals live visual UI fragments, and dims inactive services."
+    },
+    {
+      "id": "case_studies",
+      "order": 7,
+      "headline": "TRANSFORMATION IN ACTION",
+      "cases": [
+        {
+          "client": "The Forge Artisan Café",
+          "category": "Café & Bakery",
+          "problem": "High foot traffic but zero online reservations or catering bookings.",
+          "insight": "Customers wanted quick digital orders during morning peak hours.",
+          "build": "Streamlined mobile ordering site + local Google maps funnel.",
+          "metrics": {
+            "bookings": "+38% BOOKINGS",
+            "visibility": "2.4× SEARCH VISIBILITY",
+            "bounce": "-41% BOUNCE"
+          }
+        },
+        {
+          "client": "Iron & Shear Barber Studio",
+          "category": "Barber & Grooming",
+          "problem": "Outdated site causing booking drop-offs and low repeat clients.",
+          "insight": "Prepayment and fast 2-step booking removed booking anxiety.",
+          "build": "Custom dark-mode web app + automated SMS reminder system.",
+          "metrics": {
+            "bookings": "+52% REPEAT BOOKINGS",
+            "visibility": "3.1× LOCAL MAP PACK",
+            "bounce": "-35% NO-SHOWS"
+          }
+        }
+      ],
+      "visual_experience": "Interactive before/after morphing card with Ember Orange in problem state and Temper Blue-Violet in resolved result state."
+    },
+    {
+      "id": "comparison",
+      "order": 8,
+      "headline": "YOU COULD HIRE FIVE PEOPLE.",
+      "content": "Designer / Developer / SEO freelancer / Copywriter / Marketing person. Or work with one team that understands how the pieces connect.",
+      "visual_experience": "Direct, concise side-by-side comparison matrix with sharp grid borders."
+    },
+    {
+      "id": "team",
+      "order": 9,
+      "headline": "SMALL TEAM. NO BULLSHIT.",
+      "visual_experience": "Minimal typography-driven roster with hover interaction revealing role and focus."
+    },
+    {
+      "id": "final_cta",
+      "order": 10,
+      "headline": "GOT A GOOD BUSINESS? LET'S MAKE IT LOOK LIKE ONE.",
+      "sub_headline": "Brand. Website. Visibility. Customers.",
+      "ctas": [
+        "START A PROJECT →",
+        "SEE OUR WORK →"
+      ],
+      "visual_experience": "Calm black background with Temper Blue-Violet dominant glow and instant enquiry modal popover."
+    }
+  ],
+  "image_urls": [
+    {
+      "category": "cafe_case_study",
+      "description": "Modern moody artisan cafe interior for case study before/after visual",
+      "url": "https://images.unsplash.com/photo-1565650839149-2c48a094196c?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    {
+      "category": "barber_case_study",
+      "description": "Craft barber salon interior and barber styling for local business showcase",
+      "url": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?crop=entropy&cs=srgb&fm=jpg&q=85"
+    }
+  ],
+  "testing_attributes": {
+    "rule": "All interactive buttons, links, navigation items, inputs, and key indicators MUST include data-testid in kebab-case",
+    "required_test_ids": [
+      "nav-logo",
+      "nav-link-work",
+      "nav-link-services",
+      "nav-link-process",
+      "nav-link-about",
+      "nav-link-contact",
+      "hero-start-project-btn",
+      "hero-see-work-btn",
+      "process-stage-01",
+      "process-stage-02",
+      "process-stage-03",
+      "process-stage-04",
+      "process-stage-05",
+      "process-stage-06",
+      "service-item-brand",
+      "service-item-website",
+      "service-item-visibility",
+      "service-item-content",
+      "service-item-conversion",
+      "service-item-growth",
+      "case-study-card-1",
+      "case-study-card-2",
+      "modal-project-enquiry",
+      "form-input-name",
+      "form-input-email",
+      "form-input-business",
+      "form-submit-btn"
+    ]
+  },
+  "general_ui_ux_guidelines": [
+    "No generic centered templates. Rely on asymmetric Swiss grid alignment.",
+    "Do not use transparent backgrounds without backdrop-blur filters for floating nav or headers.",
+    "Maintain strict color semantic usage: Ember Orange (#FF4A1C) for active/heat, Temper Blue-Violet (#4A5FE8) for finished/resolved state.",
+    "All text must strictly use Manrope font family with high weight contrast.",
+    "Ensure high contrast compliance (APCA / WCAG AA) for all text against dark off-black surfaces."
+  ]
+}
